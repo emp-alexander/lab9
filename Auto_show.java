@@ -1,14 +1,15 @@
 import java.util.Scanner;
-public class Auto_show {
+import java.io.IOException;
+public class auto_show {
 	private static int racing = 7;
     private String autoBrand;
     private String autoName;
     private int autoCost;
     private int autoMax_speed;
     private int autoYear;
-    private Engine autoeng1 = new Engine();
+    private engine autoeng1 = new engine();
 
-    void init(String brend, String name, int cost, int max_speed, int year, Engine eng1)
+    void init(String brend, String name, int cost, int max_speed, int year, engine eng1)
     {
         this.autoBrand = brend;
         this.autoName = name;
@@ -29,7 +30,8 @@ public class Auto_show {
         System.out.println(autoeng1.GetInfo());
     }
     
-    void read(){
+    public void read(){
+       
 
         System.out.println("Enter brand: ");
         this.autoBrand = in.nextLine();
@@ -40,9 +42,29 @@ public class Auto_show {
         System.out.println("Max speed: ");
         this.autoMax_speed = in.nextInt();
         System.out.println("Year: ");
+        try{
         this.autoYear = in.nextInt();
+        if(autoYear<0)
+            throw new Exception("Exception::negative number");
+        } catch (Exception e)
+        {
+            System.err.println("Incorrect input");
+        }
+        
         autoeng1.Read();
     }
+  //  public class MyException extends MyException
+    //{
+      //  private String exception;
+        //public MyException(String exc)
+        //{
+          //  exception = exc;
+        //}
+        //public String getMessage()
+        //{
+         //   return exception;
+        //}
+    //}
     add CostAndSpeed()
     {
         return new add(autoCost, autoMax_speed);
